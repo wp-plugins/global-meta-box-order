@@ -170,7 +170,14 @@ class MetaBoxOrder {
      */
     protected function getCurrentScreen() {
 
-        $screen = get_current_screen();
+        if (function_exists('get_current_screen')) {
+
+            $screen = get_current_screen();
+
+        } else {
+
+            return false;
+        }
 
         if (!($screen && property_exists($screen, 'base'))) {
 
